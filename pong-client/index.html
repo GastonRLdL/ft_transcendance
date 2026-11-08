@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card Binder - Pong Isométrico</title>
+        <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🃏%3C/text%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/portal.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/games-shell.css" />
+    <script src="/js/shared/theme.js"></script>
+    <script src="/js/shared/user-menu.js"></script>
+  </head>
+  <body class="games-shell" data-shell-page="game" data-shell-context="JUEGOS / PONG ISOMÉTRICO">
+    <div class="app-main">
+      <div id="root"></div>
+      <script src="/js/shared/footer.js"></script>
+    </div>
+    <section id="pong-global-chat" class="pong-global-chat" aria-label="Chat global" aria-live="polite">
+      <header><strong>Sala Global de Conjuradores</strong><button id="chat-close-btn" type="button" aria-label="Cerrar chat">×</button></header>
+      <div id="chat-messages" class="pong-global-chat-messages"></div>
+      <form id="chat-form"><input id="chat-input" type="text" placeholder="Escribe a la comunidad…" autocomplete="off" required><button type="submit">Enviar</button></form>
+    </section>
+    <script src="/js/shared/app-shell.js"></script>
+    <script src="/js/shared/chat.js"></script>
+    <script type="module" src="/src/pong_main.jsx"></script>
+  </body>
+</html>
