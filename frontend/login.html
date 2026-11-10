@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🃏%3C/text%3E%3C/svg%3E">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso · Card Binder Pro</title>
+    <link rel="stylesheet" href="css/portal.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/shared/theme.js"></script>
+</head>
+<body class="login-page">
+    <header class="login-header">
+        <div class="login-brand" aria-label="Card Binder Pro">
+            <img src="public/assets/logo_cards.png" alt="">
+            <span><strong>Card Binder</strong><small>PRO · ARCHIVO PERSONAL</small></span>
+        </div>
+        <span class="login-header-note">GESTIÓN DE COLECCIÓN · MAGIC: THE GATHERING</span>
+    </header>
+
+    <main class="login-main">
+        <section class="login-intro" aria-labelledby="login-welcome-title">
+            <img class="login-worldmark" src="public/assets/Magicthegathering-logo(1).svg" alt="Magic: The Gathering">
+            <p class="login-eyebrow">TU COLECCIÓN, SIEMPRE CONTIGO</p>
+            <h1 id="login-welcome-title">Cada carta.<br><em>En su lugar.</em></h1>
+            <p class="login-description">Organiza tus cartas, encuentra cada impresión y mantén tu colección bajo control.</p>
+            <div class="login-art" aria-hidden="true">
+                <span class="login-art-glow"></span>
+                <img src="public/assets/deco1.png" alt="">
+            </div>
+            <div class="login-values" aria-label="Funciones de Card Binder Pro">
+                <span>ORGANIZA</span><i></i><span>ENCUENTRA</span><i></i><span>COLECCIONA</span>
+            </div>
+        </section>
+
+        <section class="auth-card" aria-labelledby="auth-title">
+            <div class="auth-heading">
+                <p>BIENVENIDO A TU ARCHIVO</p>
+                <h2 id="auth-title">Inicia sesión</h2>
+                <span id="auth-description">Accede para continuar organizando tu colección.</span>
+            </div>
+
+            <div class="auth-tabs" role="tablist" aria-label="Acceso a Card Binder Pro">
+                <button id="tabLoginBtn" type="button" role="tab" aria-selected="true" aria-controls="loginFormContainer" data-tab="login" class="tab-btn active">Iniciar sesión</button>
+                <button id="tabRegisterBtn" type="button" role="tab" aria-selected="false" aria-controls="registerFormContainer" data-tab="register" class="tab-btn">Crear cuenta</button>
+            </div>
+
+            <div id="loginFormContainer" class="auth-panel" role="tabpanel" aria-labelledby="tabLoginBtn">
+                <form id="loginForm" class="auth-form">
+                    <div class="auth-field">
+                        <label for="loginUser">Usuario o correo electrónico</label>
+                        <input type="text" id="loginUser" maxlength="254" autocomplete="username" required placeholder="Tu usuario o correo">
+                    </div>
+                    <div class="auth-field">
+                        <label for="loginPass">Contraseña</label>
+                        <input type="password" id="loginPass" maxlength="128" autocomplete="current-password" required placeholder="Tu contraseña">
+                    </div>
+                    <button type="submit" class="auth-submit">Entrar en mi colección <span aria-hidden="true">→</span></button>
+                </form>
+
+                <div class="auth-divider"><span>o continúa con</span></div>
+                <button type="button" data-action="login42" class="auth-42-button">
+                    <img src="public/assets/42_Logo.svg" alt="">
+                    <span>Iniciar sesión con 42</span>
+                    <span aria-hidden="true">↗</span>
+                </button>
+            </div>
+
+            <div id="registerFormContainer" class="auth-panel hidden" role="tabpanel" aria-labelledby="tabRegisterBtn" hidden>
+                <form id="registerForm" class="auth-form auth-form-register">
+                    <div class="auth-field">
+                        <label for="regUser">Nombre de usuario</label>
+                        <input type="text" id="regUser" minlength="3" maxlength="30" pattern="[A-Za-z0-9_.\-]+" title="3-30 caracteres: letras, números, punto, guion y guion bajo" autocomplete="username" required placeholder="Elige un alias">
+                        <small>De 3 a 30 caracteres. Letras, números, punto, guion o guion bajo.</small>
+                    </div>
+                    <div class="auth-field">
+                        <label for="regEmail">Correo electrónico</label>
+                        <input type="email" id="regEmail" maxlength="254" autocomplete="email" required placeholder="tu@correo.com">
+                    </div>
+                    <div class="auth-field">
+                        <label for="regPass">Contraseña</label>
+                        <input type="password" id="regPass" minlength="8" maxlength="128" autocomplete="new-password" title="Mínimo 8 caracteres" required placeholder="Al menos 8 caracteres">
+                    </div>
+                    <button type="submit" class="auth-submit">Crear mi cuenta <span aria-hidden="true">→</span></button>
+                </form>
+                <div class="auth-register-42"><span>¿Estudias en 42?</span> <a href="#" data-action="login42">Accede con tu cuenta 42</a></div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/pages/login.js"></script>
+    <script src="js/shared/footer.js"></script>
+</body>
+</html>

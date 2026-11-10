@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🃏%3C/text%3E%3C/svg%3E">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Binder Pro - Sala de Espera (Lobby)</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/portal.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/games-shell.css">
+    <script src="js/shared/theme.js"></script>
+    <script src="js/shared/user-menu.js"></script>
+</head>
+<body class="games-shell font-ui" data-shell-page="lobby">
+<div class="app-main">
+<main class="games-content lobby-content">
+    <header class="lobby-heading">
+        <div>
+            <p class="games-eyebrow">ADIVINA LA CARTA · SALA DE ESPERA</p>
+            <h1>Sala <span id="room-name-display">sala-1</span></h1>
+            <p id="room-status" class="lobby-connection" data-connection="connecting">Conectando al vestíbulo…</p>
+        </div>
+        <div class="lobby-heading-actions">
+            <div class="lobby-player-count"><span>Jugadores</span><strong id="player-count">0/4</strong></div>
+            <button id="invite-btn" type="button" class="lobby-button invite-button"><span aria-hidden="true">↗</span> Invitar</button>
+            <button id="leave-room-btn" type="button" class="lobby-button leave-button"><span aria-hidden="true">←</span> Salir</button>
+        </div>
+    </header>
+
+    <div class="lobby-layout">
+        <section class="lobby-panel players-panel" aria-labelledby="players-heading">
+            <div class="lobby-panel-heading">
+                <div><p class="games-eyebrow">EN LA MESA</p><h2 id="players-heading">Jugadores</h2></div>
+                <span class="lobby-panel-mark" aria-hidden="true">♙</span>
+            </div>
+            <ul id="players-list" class="lobby-players-list" aria-live="polite">
+                <li class="lobby-empty-player">Esperando jugadores…</li>
+            </ul>
+
+            <div id="host-controls" class="lobby-host-controls hidden">
+                <p class="games-eyebrow">CONFIGURACIÓN DE SALA</p>
+                <label for="max-players-select">Máximo de jugadores</label>
+                <select id="max-players-select">
+                    <option value="1">1 jugador · práctica</option>
+                    <option value="2">2 jugadores · duelo</option>
+                    <option value="3">3 jugadores</option>
+                    <option value="4" selected>4 jugadores</option>
+                </select>
+                <button id="start-game-btn" type="button" class="lobby-start-btn">Comenzar partida <span aria-hidden="true">→</span></button>
+            </div>
+            <p id="waiting-host-msg" class="lobby-waiting-note">Esperando a que el anfitrión inicie la partida…</p>
+        </section>
+
+        <section class="lobby-panel room-chat-panel" aria-labelledby="lobby-chat-heading">
+            <div class="lobby-panel-heading chat-panel-heading">
+                <div><p class="games-eyebrow">COORDINA LA PARTIDA</p><h2 id="lobby-chat-heading">Chat de la sala</h2></div>
+                <span class="lobby-chat-online"><i aria-hidden="true"></i> En directo</span>
+            </div>
+            <div id="chat-messages" aria-live="polite" aria-relevant="additions" class="lobby-chat-messages">
+                <div class="lobby-system-message">Bienvenido al vestíbulo. ¡Prepara tus tácticas!</div>
+            </div>
+            <form id="chat-form" class="lobby-chat-form">
+                <label class="visually-hidden" for="chat-input">Mensaje para el chat de la sala</label>
+                <input type="text" id="chat-input" placeholder="Escribe un mensaje…" autocomplete="off" maxlength="200">
+                <button type="submit" aria-label="Enviar mensaje">Enviar <span aria-hidden="true">↑</span></button>
+            </form>
+        </section>
+    </div>
+
+    <script src="js/pages/lobby.js"></script>
+    <script src="js/shared/footer.js"></script>
+    </main>
+    </div>
+    <script src="js/shared/app-shell.js"></script>
+</body>
+</html>
