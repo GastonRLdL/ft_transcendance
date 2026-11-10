@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🃏%3C/text%3E%3C/svg%3E">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Binder - Home</title>
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Enlace a la hoja de estilos externa -->
+    <link rel="stylesheet" href="css/portal.css">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- Tema azulado de 42 (fondo y colores): lo activa theme.js si el usuario es de 42 -->
+    <script src="js/shared/theme.js"></script>
+    <script src="js/pages/index.js"></script>
+    <script src="js/shared/user-menu.js"></script>
+</head>
+<body class="home-page min-h-screen w-full relative" data-shell-page="home">
+
+    <!-- El menú de usuario y el panel de medallas los crea js/shared/user-menu.js -->
+<div class="app-main">
+<main class="home-content">
+            <section class="home-hero" aria-labelledby="welcome-title">
+                <div class="hero-copy">
+                    <img class="hero-worldmark" src="public/assets/Magicthegathering-logo(1).svg" alt="Magic: The Gathering">
+                    <p class="eyebrow"><span class="eyebrow-mark">✦</span> TU ARCHIVO, A TU MANERA</p>
+                    <h1 id="welcome-title">Toda tu colección.<br><em>En un solo lugar.</em></h1>
+                    <p class="hero-description">Encuentra tus cartas, organiza tus binders y mantén cada pieza de tu colección a mano.</p>
+                    <form class="hero-search" action="visor-admin-25d.html" method="get">
+                        <label class="visually-hidden" for="home-card-search">Buscar cartas</label>
+                        <span aria-hidden="true">⌕</span>
+                        <input id="home-card-search" name="q" type="search" placeholder="Buscar en el catálogo de cartas…" autocomplete="off">
+                        <button type="submit">Buscar <span aria-hidden="true">→</span></button>
+                    </form>
+                    <div class="hero-actions">
+                        <a class="button-primary" href="report.html">Abrir mi colección <span>→</span></a>
+                        <a class="button-quiet" href="visor-admin-25d.html">Añadir una carta</a>
+                    </div>
+                </div>
+                <div class="hero-art" aria-hidden="true">
+                    <div class="hero-art-glow"></div>
+                    <img src="public/assets/deco1.png" alt="">
+                </div>
+            </section>
+
+            <section class="home-shortcuts" aria-label="Accesos directos">
+                <a href="report.html"><span class="shortcut-icon">▤</span><span><strong>Mi colección</strong><small>Consulta y filtra tus cartas</small></span><b>→</b></a>
+                <a href="containers.html"><span class="shortcut-icon">▣</span><span><strong>Contenedores</strong><small>Organiza y abre tus archivadores</small></span><b>→</b></a>
+                <a href="hub-juegos.html"><span class="shortcut-icon">✧</span><span><strong>Jugar</strong><small>Desafíos y partidas</small></span><b>→</b></a>
+            </section>
+            <section class="home-progression" data-xp-widget aria-labelledby="home-progression-title">
+                <div class="home-progression-label">
+                    <span class="shortcut-icon" aria-hidden="true">✦</span>
+                    <div><span class="section-kicker">TU PROGRESO</span><h2 id="home-progression-title">Nivel de conjurador</h2></div>
+                </div>
+                <div class="home-progression-level"><span>NIVEL</span><strong data-xp-level>—</strong></div>
+                <div class="home-progression-meter">
+                    <div class="home-progression-track" data-xp-track role="progressbar" aria-label="Progreso al siguiente nivel" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-xp-bar></span></div>
+                    <p class="home-progression-caption" data-xp-caption>Cargando progreso…</p>
+                </div>
+                <a href="stats.html" aria-label="Ver estadísticas y progreso">Ver progreso <span aria-hidden="true">→</span></a>
+            </section>
+            <section class="home-note">
+                <div><span class="section-kicker">UN ESPACIO PARA CADA CARTA</span><h2>Tu colección, siempre en orden.</h2></div>
+                <a href="report.html">Ver resumen de colección <span>→</span></a>
+            </section>
+        </main>
+    </div>
+
+    <!-- 💬 COMPONENTE DE SALA DE CHAT GLOBAL (OCULTO POR DEFECTO) -->
+    <div id="chat-box" class="fixed bottom-24 right-6 w-80 md:w-96 h-[450px] bg-[rgb(var(--c-panel)/0.95)] border-2 border-[rgb(var(--c-gold))] rounded-2xl shadow-2xl backdrop-blur-md hidden flex-col z-50 overflow-hidden font-sans">
+        <!-- Cabecera del Chat -->
+        <div class="bg-[rgb(var(--c-panel-2))] border-b border-[rgb(var(--c-gold)/0.4)] px-4 py-3 flex justify-between items-center text-[rgb(var(--c-amber-100))]">
+            <div class="flex items-center space-x-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+                <span class="font-bold tracking-wide text-sm">Sala Global de Conjuradores 🌐</span>
+            </div>
+            <button id="chat-close-btn" class="text-[rgb(var(--c-amber-400))] hover:text-white transition-colors cursor-pointer text-lg font-bold px-1">✕</button>
+        </div>
+
+        <!-- Contenedor de Mensajes -->
+        <div id="chat-messages" class="flex-1 p-4 overflow-y-auto flex flex-col bg-[rgb(var(--c-ink-2)/0.6)] text-sm">
+            <!-- Los mensajes se inyectarán dinámicamente aquí -->
+        </div>
+
+        <!-- Formulario de Entrada -->
+        <form id="chat-form" class="bg-[rgb(var(--c-panel-2))] border-t border-[rgb(var(--c-gold)/0.4)] p-3 flex items-center space-x-2 relative">
+            
+            <!-- 🌟 BOTÓN Y PANEL FLOTANTE DE GIPHY SEARCH -->
+            <div class="relative">
+                <button type="button" id="sticker-toggle-btn" class="bg-[rgb(var(--c-gold)/0.2)] hover:bg-[rgb(var(--c-gold)/0.4)] border border-[rgb(var(--c-gold)/0.6)] text-[rgb(var(--c-amber-200))] px-2.5 py-2 rounded-xl text-xs transition-colors cursor-pointer" title="Buscar GIF">
+                    ✨ GIF
+                </button>
+                
+                <!-- Panel flotante del buscador de Giphy -->
+                <div id="sticker-picker" class="absolute bottom-12 left-0 w-64 bg-[rgb(var(--c-panel-2))] border-2 border-[rgb(var(--c-gold))] rounded-xl p-3 shadow-2xl hidden flex flex-col space-y-2 z-50 font-sans">
+                    <input type="text" id="giphy-search-input" placeholder="Buscar GIF (ej. magic, fire)..." autocomplete="off" class="bg-[rgb(var(--c-panel))] border border-[rgb(var(--c-gold)/0.6)] rounded-lg px-2.5 py-1.5 text-[rgb(var(--c-amber-100))] text-xs focus:outline-hidden focus:border-[rgb(var(--c-amber-400))]" />
+                    
+                    <div id="giphy-results" class="grid grid-cols-3 gap-1.5 max-h-40 overflow-y-auto">
+                        <span class="chat-hint">Escribe algo para buscar...</span>
+                    </div>
+
+                    <!-- 🏷️ LOGOTIPO DE ATRIBUCIÓN OBLIGATORIO DE GIPHY -->
+                    <div class="pt-1.5 border-t border-[rgb(var(--c-gold)/0.3)] flex justify-center items-center">
+                        <img src="public/assets/Poweredby_100px-Black_VertLogo.png" alt="Powered by Giphy" class="h-4 opacity-75 object-contain" />
+                    </div>
+                </div>
+            </div>
+
+            <input type="text" id="chat-input" placeholder="Escribe un mensaje a la comunidad..." autocomplete="off" class="flex-1 bg-[rgb(var(--c-panel))] border border-[rgb(var(--c-gold)/0.6)] rounded-xl px-3 py-2 text-[rgb(var(--c-amber-100))] text-xs focus:outline-hidden focus:border-[rgb(var(--c-amber-400))]" required />
+            <button type="submit" class="bg-[rgb(var(--c-gold)/0.3)] hover:bg-[rgb(var(--c-gold)/0.6)] border border-[rgb(var(--c-gold))] text-[rgb(var(--c-amber-200))] px-4 py-2 rounded-xl text-xs font-semibold transition-colors cursor-pointer">
+                Enviar
+            </button>
+        </form>
+    </div>
+
+    <script src="js/shared/app-shell.js"></script>
+    <script src="js/shared/chat.js"></script>
+    <script src="js/shared/xp-widget.js"></script>
+    <script src="js/shared/footer.js"></script>
+</body>
+</html>
