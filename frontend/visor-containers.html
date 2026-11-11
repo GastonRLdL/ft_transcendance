@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%83%8F%3C/text%3E%3C/svg%3E">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenido del contenedor · Card Binder Pro</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/portal.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/visor-containers.css">
+    <script src="js/shared/theme.js"></script>
+    <script src="js/shared/user-menu.js"></script>
+</head>
+<body class="container-browser-page" data-shell-page="containers">
+    <div class="app-main">
+        <main class="container-browser-content">
+            <header class="container-browser-heading">
+                <div>
+                    <p class="containers-eyebrow">TU ARCHIVO PERSONAL</p>
+                    <h1>Contenido del contenedor</h1>
+                    <p>Recorre las páginas, consulta las cartas y gestiona sus huecos.</p>
+                </div>
+                <a class="containers-heading-action" href="containers.html"><span aria-hidden="true">←</span> Volver a contenedores</a>
+            </header>
+
+            <section class="container-browser-toolbar" aria-label="Filtrar y seleccionar contenedor">
+                <div class="browser-filter-field">
+                    <label for="filterContainerType">Tipo</label>
+                    <select id="filterContainerType">
+                        <option value="all">Todos los tipos</option>
+                        <option value="binder_s">Archivador pequeño</option>
+                        <option value="binder_m">Archivador mediano</option>
+                        <option value="binder_xl">Archivador grande</option>
+                        <option value="deck">Mazo</option>
+                        <option value="box">Caja</option>
+                    </select>
+                </div>
+                <div class="browser-filter-field browser-select-field">
+                    <label for="containerSelector">Contenedor</label>
+                    <select id="containerSelector">
+                        <option value="">Cargando tus contenedores…</option>
+                    </select>
+                </div>
+            </section>
+
+            <section id="containerInfoBar" class="container-info-bar hidden" aria-live="polite">
+                <div class="container-info-copy">
+                    <p class="panel-kicker">CONTENEDOR ABIERTO</p>
+                    <h2 id="containerTitle">Selecciona un contenedor</h2>
+                    <div id="containerStats" class="container-stats">—</div>
+                </div>
+                <div class="container-info-actions">
+                    <button id="deleteContainerBtn" class="delete-container-btn hidden" type="button" disabled title="Solo se pueden eliminar contenedores vacíos">Eliminar contenedor vacío</button>
+                    <a id="showAllContainersBtn" class="container-back-btn hidden" href="containers.html">← Todos los contenedores</a>
+                </div>
+            </section>
+
+            <section id="visualWorkspace" class="visual-workspace" aria-live="polite" aria-busy="true">
+                <div class="workspace-message">Cargando tus contenedores…</div>
+            </section>
+        </main>
+    </div>
+
+    <div id="deleteConfirmModal" class="delete-confirm-modal hidden" role="presentation">
+        <div class="delete-confirm-panel" role="dialog" aria-modal="true" aria-labelledby="deleteModalTitle" aria-describedby="deleteModalText">
+            <p class="panel-kicker">CONFIRMA LA ACCIÓN</p>
+            <h2 id="deleteModalTitle">Retirar carta</h2>
+            <p id="deleteModalText">¿Deseas retirar esta carta del contenedor?</p>
+            <div class="delete-confirm-actions">
+                <button id="cancelDeleteBtn" class="container-back-btn" type="button">Cancelar</button>
+                <button id="confirmDeleteBtn" class="delete-confirm-btn" type="button">Eliminar carta</button>
+            </div>
+        </div>
+    </div>
+
+    <dialog id="lightbox" class="container-lightbox">
+        <img id="lightbox-img" alt="">
+        <div><p id="lightbox-caption"></p><button id="lightbox-close" class="container-back-btn" type="button">Cerrar</button></div>
+    </dialog>
+
+    <script src="js/shared/app-shell.js"></script>
+    <script src="js/shared/auth.js"></script>
+    <script src="js/pages/visor-containers.js"></script>
+</body>
+</html>

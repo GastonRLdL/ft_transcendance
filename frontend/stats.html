@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🃏%3C/text%3E%3C/svg%3E">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas y ranking · Card Binder Pro</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/portal.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/stats.css">
+    <script src="js/shared/theme.js"></script>
+    <script src="js/shared/user-menu.js"></script>
+</head>
+<body class="stats-page" data-shell-page="stats">
+<div class="app-main">
+    <main class="stats-content">
+        <header class="stats-heading">
+            <div>
+                <p class="stats-eyebrow">TU TRAYECTORIA</p>
+                <h1>Estadísticas y ranking</h1>
+                <p>Tu progreso en la mesa y entre conjuradores.</p>
+            </div>
+            <label class="stats-filter" for="game-filter">
+                <span>Juego</span>
+                <select id="game-filter" class="fantasy-input">
+                    <option value="">Todos los juegos</option>
+                    <option value="guess_card">Adivina la Carta</option>
+                    <option value="pong">Pong</option>
+                </select>
+            </label>
+        </header>
+
+        <section class="xp-panel" aria-labelledby="h-level">
+            <div class="xp-panel-heading">
+                <div>
+                    <p class="stats-kicker">PROGRESO DEL ARCHIVO</p>
+                    <h2 id="h-level">Nivel y experiencia</h2>
+                </div>
+                <div class="xp-level"><span>NIVEL</span><strong id="xp-level">1</strong></div>
+            </div>
+            <div class="xp-progress-copy"><span id="xp-text">Cargando experiencia…</span></div>
+            <div class="xp-track" id="xp-bar-wrap" role="progressbar" aria-label="Progreso al siguiente nivel" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <div id="xp-bar"></div>
+            </div>
+            <p id="xp-breakdown" class="xp-breakdown"></p>
+            <p id="xp-error" class="stats-error" role="status" hidden>No se pudo cargar tu progreso.</p>
+        </section>
+
+        <section class="stats-summary-section" aria-labelledby="h-summary">
+            <div class="stats-section-heading">
+                <div><p class="stats-kicker">BALANCE PERSONAL</p><h2 id="h-summary">Tu resumen</h2></div>
+                <p id="summary-status" class="stats-status" role="status">Cargando estadísticas…</p>
+            </div>
+            <div id="summary" class="stats-summary" aria-live="polite"></div>
+        </section>
+
+        <div class="stats-columns">
+            <section class="stats-panel history-panel" aria-labelledby="h-history">
+                <div class="stats-section-heading">
+                    <div><p class="stats-kicker">TU ACTIVIDAD</p><h2 id="h-history">Historial de partidas</h2></div>
+                </div>
+                <div class="stats-table-wrap">
+                    <table class="stats-table">
+                        <thead><tr><th>Fecha</th><th>Juego</th><th>Resultado</th><th>Puntos</th><th>Rivales</th></tr></thead>
+                        <tbody id="history"></tbody>
+                    </table>
+                </div>
+                <p id="history-empty" class="stats-empty" hidden>Aún no has jugado ninguna partida.</p>
+            </section>
+
+            <section class="stats-panel board-panel" aria-labelledby="h-board">
+                <div class="stats-section-heading">
+                    <div><p class="stats-kicker">LA COMUNIDAD</p><h2 id="h-board">Ranking</h2></div>
+                    <span class="ranking-tag">TOP 10</span>
+                </div>
+                <div class="stats-table-wrap">
+                    <table class="stats-table">
+                        <thead><tr><th>#</th><th>Jugador</th><th>Victorias</th><th>Partidas</th><th>Puntos</th></tr></thead>
+                        <tbody id="board"></tbody>
+                    </table>
+                </div>
+                <p id="board-empty" class="stats-empty" hidden>Todavía no hay partidas registradas.</p>
+                <p id="stats-error" class="stats-error" role="status" hidden>No se pudieron cargar las estadísticas. Vuelve a intentarlo más tarde.</p>
+            </section>
+        </div>
+    </main>
+</div>
+<script src="js/shared/auth.js"></script>
+<script src="js/pages/stats.js"></script>
+<script src="js/shared/footer.js"></script>
+<script src="js/shared/app-shell.js"></script>
+</body>
+</html>
