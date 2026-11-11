@@ -1,0 +1,90 @@
+/* gacha.js · Apertura de sobres: vídeo, carta con GIF aleatorio y botón de repetir (gacha.html) */
+document.addEventListener('DOMContentLoaded', () => {
+    const openBtn = document.getElementById('open-pack-btn');
+    const initialAction = document.getElementById('initial-action');
+    const videoContainer = document.getElementById('video-container');
+    const gachaVideo = document.getElementById('gacha-video');
+    const cardResult = document.getElementById('card-result');
+    const cardGifContainer = document.getElementById('card-gif-container');
+    const cardTitle = document.getElementById('card-title');
+    const cardRarity = document.getElementById('card-rarity');
+    const postOpenActions = document.getElementById('post-open-actions');
+    const openAnotherBtn = document.getElementById('open-another-btn');
+
+    const FALLBACK_GIF = '/public/assets/nocapi.png';
+
+    const searchKeywords = [
+        "wizard cat", "epic warrior", "magic dragon", "cyberpunk samurai", 
+        "funny monster", "cute wizard", "space alien", "dark knight", "golden beast",
+        "arcane library", "mana spirit"
+    ];
+
+    const titlesPool = [
+        "Familiar de la Niebla", "Archivista del Inframundo", "Gatete Archimago",
+        "Guerrero del Crepúsculo", "Señor de los Servidores", "Dragón de Código Antiguo",
+        "Hechicero Errante", "Caballero de la Biblioteca", "Espectro de la Base de Datos",
+        "Gólem de Datos", "Ángel del Alba", "Oráculo del Caos"
+    ];
+
+    openBtn.addEventListener('click', async () => {
+        initialAction.classList.add('hidden');
+        videoContainer.classList.remove('hidden');
+        postOpenActions.classList.add('hidden');
+        cardResult.classList.add('hidden');
+
+        gachaVideo.currentTime = 0;
+        gachaVideo.play();
+
+        const randomKeyword = searchKeywords[Math.floor(Math.random() * searchKeywords.length)];
+        const randomTitle = titlesPool[Math.floor(Math.random() * titlesPool.length)];
+        
+        let fetchedGifUrl = FALLBACK_GIF;
+        try {
+            const res = await fetch(`/api/giphy/search?q=${encodeURIComponent(randomKeyword)}&limit=15`);
+            const data = await res.json();
+            if (data.data && data.data.length > 0) {
+                const randomGif = data.data[Math.floor(Math.random() * data.data.length)];
+                fetchedGifUrl = randomGif.images.fixed_height.url;
+            }
+        } catch (err) {
+            console.error("Error obteniendo GIF:", err);
+            fetchedGifUrl = FALLBACK_GIF;
+        }
+
+        cardTitle.textContent = randomTitle;
+        // Imagen creada con DOM (sin innerHTML); solo se acepta https
+        const art = document.createElement('img');
+        art.className = 'w-full h-full object-cover';
+        art.alt = 'Carta Art';
+        art.src = /^https:\/\//.test(fetchedGifUrl) ? fetchedGifUrl : FALLBACK_GIF;
+        cardGifContainer.replaceChildren(art);
+        cardRarity.textContent = `✨ ${randomKeyword.toUpperCase()}`;
+
+        // Sincronizado en el segundo 5.5 para clavar la revelación estática perfecta
+        gachaVideo.ontimeupdate = () => {
+            if (gachaVideo.currentTime >= 9.5 && cardResult.classList.contains('hidden')) {
+                cardResult.classList.remove('hidden');
+                cardResult.classList.add('flex');
+            }
+        };
+
+        gachaVideo.onended = () => {
+            postOpenActions.classList.remove('hidden');
+            postOpenActions.classList.add('flex');
+        };
+    });
+
+    // El sobre también abre el sobre (ratón o teclado), igual que el botón
+    const magicPack = document.getElementById('magic-pack');
+    magicPack.addEventListener('click', () => openBtn.click());
+    magicPack.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openBtn.click(); }
+    });
+
+    openAnotherBtn.addEventListener('click', () => {
+        postOpenActions.classList.add('hidden');
+        cardResult.classList.add('hidden');
+        videoContainer.classList.add('hidden');
+        initialAction.classList.remove('hidden');
+    });
+});
