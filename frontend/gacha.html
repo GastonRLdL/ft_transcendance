@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🃏%3C/text%3E%3C/svg%3E">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Binder - Gacha de Conjuradores</title>
+    <link rel="stylesheet" href="css/portal.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/games-shell.css">
+    <link rel="stylesheet" href="css/gacha.css">
+    <script src="js/shared/auth.js"></script>
+    <script>CBAuth.requireSession();</script>
+    <script src="js/shared/theme.js"></script>
+    <script src="js/shared/user-menu.js"></script>
+</head>
+<body class="games-shell gacha-page" data-shell-page="gacha">
+    <div class="app-main">
+        <main class="games-content gacha-content">
+            <header class="gacha-heading">
+                <div>
+                    <p class="gacha-eyebrow">UN RITUAL DE AZAR</p>
+                    <h1>Abrir sobres</h1>
+                    <p>Desvela una criatura inesperada y deja que la magia haga el resto.</p>
+                </div>
+                <span class="gacha-free-tag"><span aria-hidden="true">✦</span> INVOCACIÓN GRATUITA</span>
+            </header>
+
+            <section class="gacha-stage" aria-label="Apertura de sobre">
+                <div class="gacha-stage-glow" aria-hidden="true"></div>
+                <div id="initial-action" class="gacha-start-panel">
+                    <div id="magic-pack" role="button" tabindex="0" aria-label="Abrir sobre arcano" class="gacha-pack">
+                        <span class="gacha-pack-seal" aria-hidden="true">✦</span>
+                        <span class="gacha-pack-mark" aria-hidden="true">M</span>
+                        <span class="gacha-pack-name">ARCHIVO<br>ARCANO</span>
+                        <span class="gacha-pack-edition">SOBRE DE INVOCACIÓN · 01</span>
+                    </div>
+                    <div class="gacha-start-copy">
+                        <p class="gacha-eyebrow">EL DESTINO ESTÁ SELLADO</p>
+                        <h2>¿Qué aguarda en su interior?</h2>
+                        <p>Haz clic en el sobre o inicia la apertura. Una ilustración y una criatura aleatorias te esperan.</p>
+                        <button id="open-pack-btn" class="gacha-primary-btn" type="button"><span aria-hidden="true">✦</span> Abrir sobre gratis <span aria-hidden="true">→</span></button>
+                        <span class="gacha-hint">La sorpresa se genera al abrir cada sobre.</span>
+                    </div>
+                </div>
+
+                <div id="video-container" class="gacha-reveal hidden">
+                    <video id="gacha-video" class="gacha-video" muted playsinline>
+                        <source src="/public/assets/carta.mp4" type="video/mp4">
+                        Tu navegador no soporta vídeo.
+                    </video>
+                    <div id="card-result" class="gacha-card-result hidden" aria-live="polite">
+                        <div class="gacha-card-art" id="card-gif-container"></div>
+                        <div class="gacha-card-copy">
+                            <span class="gacha-card-label">DESCUBRIMIENTO ARCANO</span>
+                            <span id="card-title">Criatura legendaria</span>
+                            <span id="card-rarity">✦ Leyenda</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="post-open-actions" class="gacha-after hidden">
+                    <p>El sobre ha revelado su secreto.</p>
+                    <button id="open-another-btn" class="gacha-secondary-btn" type="button">Abrir otro sobre <span aria-hidden="true">→</span></button>
+                </div>
+            </section>
+
+            <div class="gacha-footnote"><span aria-hidden="true">◇</span> Una experiencia de azar para la comunidad de Card Binder Pro</div>
+        </main>
+        <script src="js/shared/footer.js"></script>
+    </div>
+    <section id="chat-box" class="gacha-global-chat" aria-label="Chat global" aria-live="polite">
+        <header><strong>Sala Global de Conjuradores</strong><button id="chat-close-btn" type="button" aria-label="Cerrar chat">×</button></header>
+        <div id="chat-messages" class="gacha-global-chat-messages"></div>
+        <form id="chat-form"><input id="chat-input" type="text" placeholder="Escribe a la comunidad…" autocomplete="off" required><button type="submit">Enviar</button></form>
+    </section>
+    <script src="js/shared/app-shell.js"></script>
+    <script src="js/shared/chat.js"></script>
+    <script src="js/pages/gacha.js"></script>
+</body>
+</html>

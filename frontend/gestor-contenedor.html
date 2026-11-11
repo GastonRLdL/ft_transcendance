@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="default">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🃏%3C/text%3E%3C/svg%3E">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Binder Pro — Gestión Carta</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/portal.css">
+    <link rel="stylesheet" href="css/gestor-contenedor.css">
+    <script src="js/shared/theme.js"></script>
+</head>
+<body class="font-ui min-h-screen flex flex-col items-center p-4">
+
+    <!-- Cabecera simplificada -->
+    <header class="w-full max-w-xl flex justify-between items-center mb-6 bg-[rgb(var(--c-panel))] border border-[rgb(var(--c-gold)/0.3)] p-4 rounded-xl shadow-lg">
+        <div class="flex items-center gap-4">
+            <a href="index.html" title="Volver al inicio">
+                <img src="public/assets/logomagic.png" alt="Magic Logo" class="h-10 hover:scale-105 transition-transform">
+            </a>
+            <span class="magic-title text-xl text-[rgb(var(--c-amber-400))] font-bold border-l border-[rgb(var(--c-gold)/0.3)] pl-4">
+                Gestión Carta
+            </span>
+        </div>
+  
+        <div>
+            <button id="backBtn" class="bg-[rgb(var(--c-raised-2))] hover:bg-[rgb(var(--c-raised-3))] text-[rgb(var(--c-amber-200))] font-semibold px-4 py-2 rounded-xl text-xs transition-all border border-[rgb(var(--c-gold)/0.4)] cursor-pointer">
+                ⬅ Volver al Visor
+            </button>
+        </div>
+    </header>
+
+    <!-- Contenido Principal Centrado -->
+    <main class="w-full max-w-xl flex flex-col items-center gap-4">
+        <button id="toggleMagnifierBtn" class="visor-mode-btn">
+            🔍 Modo Lupa: <span id="modeStatus">DESACTIVADO</span>
+        </button>
+
+        <div class="card-perspective-container w-full flex justify-center py-2" id="cardContainer">
+            <div class="interactive-card" id="interactiveCard">
+                <img id="dynamicCardImg" src="public/assets/capicarta.png" alt="Vista previa de la carta" class="rounded-xl shadow-2xl max-h-[520px] object-contain">
+            </div>
+            <div class="card-magnifier" id="cardMagnifier"></div>
+        </div>
+    </main>
+
+    <script src="js/shared/auth.js"></script>
+    <script src="js/pages/gestor-contenedor.js"></script>
+    <script src="js/shared/footer.js"></script>
+</body>
+</html>
