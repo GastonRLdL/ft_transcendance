@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🃏%3C/text%3E%3C/svg%3E">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Binder Pro - Perfil y Social</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/portal.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <script src="js/shared/theme.js"></script>
+    <script src="js/shared/xp-widget.js"></script>
+    <script src="js/shared/user-menu.js"></script>
+</head>
+<body class="profile-page" data-shell-page="profile">
+    <div class="app-main">
+        <main class="profile-content">
+            <header class="profile-heading">
+                <div><p class="profile-eyebrow">IDENTIDAD Y COMUNIDAD</p><h1>Perfil y comunidad</h1>
+                    <p>Tu espacio personal, tus amistades y el control de lo que compartes.</p></div>
+            </header>
+            <div class="profile-layout">
+                <div class="profile-main-column">
+                    <section class="profile-panel identity-panel" aria-label="Mi perfil">
+                        <div id="avatar-slot" class="identity-avatar"></div>
+                        <div class="identity-copy"><p class="profile-eyebrow">TU PERFIL</p>
+                            <h2 id="username-display">Cargando...</h2><p id="email-display" class="profile-email">&nbsp;</p>
+                            <span id="badge-display" class="profile-badge hidden"></span>
+                        </div>
+                        <button id="remove-avatar-btn" type="button" class="profile-quiet hidden">Quitar avatar</button>
+                    </section>
+
+                    <section class="profile-panel profile-xp-panel" data-xp-widget aria-labelledby="profile-xp-title">
+                        <div class="profile-xp-medallion"><span>NIVEL</span><strong data-xp-level>—</strong></div>
+                        <div class="profile-xp-copy"><p class="profile-eyebrow">PROGRESO DEL CONJURADOR</p><h2 id="profile-xp-title">Tu experiencia</h2>
+                            <p data-xp-caption>Cargando progreso…</p>
+                            <div class="profile-xp-track" data-xp-track role="progressbar" aria-label="Progreso al siguiente nivel" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span data-xp-bar></span></div>
+                        </div>
+                        <a class="profile-link profile-xp-link" href="stats.html">Ver estadísticas <span aria-hidden="true">→</span></a>
+                    </section>
+
+                    <section class="profile-panel" id="collection-panel">
+                        <div class="profile-panel-heading"><div><p class="profile-eyebrow">TU ARCHIVO</p><h2>Mi colección</h2></div>
+                            <a class="profile-link" href="report.html">Abrir colección <span aria-hidden="true">→</span></a></div>
+                        <dl class="profile-stats">
+                            <div><dd data-stat="copies">—</dd><dt>Copias</dt></div>
+                            <div><dd data-stat="cards">—</dd><dt>Cartas distintas</dt></div>
+                            <div><dd data-stat="containers">—</dd><dt>Contenedores</dt></div>
+                        </dl>
+                        <p id="collection-note" class="collection-note hidden"></p>
+                    </section>
+
+                    <section class="profile-panel" id="privacy-panel">
+                        <div class="profile-panel-heading"><div><p class="profile-eyebrow">TÚ DECIDES</p><h2>Privacidad</h2></div><span class="privacy-emblem" aria-hidden="true">◈</span></div>
+                        <form id="privacy-form" class="privacy-form">
+                            <label class="privacy-toggle-row" for="profile-private">
+                                <span><strong>Perfil privado</strong><small>No aparecerás en la búsqueda de usuarios. Tus amistades actuales seguirán teniendo acceso según estos permisos.</small></span>
+                                <input id="profile-private" type="checkbox">
+                            </label>
+                            <label class="profile-field" for="collection-visibility"><span>Visibilidad de la colección</span>
+                                <select id="collection-visibility">
+                                    <option value="hidden">Oculta · no compartir datos</option>
+                                    <option value="summary">Resumen · totales generales</option>
+                                    <option value="stats">Estadísticas · totales y rarezas</option>
+                                    <option value="browse">Explorable · permite ver cartas y ediciones</option>
+                                </select>
+                            </label>
+                            <p id="privacy-description" class="privacy-description">Solo tú puedes ver los datos de tu colección.</p>
+                            <div class="privacy-form-footer"><span id="privacy-status" role="status" aria-live="polite"></span>
+                                <button id="save-privacy" class="collection-action primary" type="submit">Guardar privacidad</button></div>
+                        </form>
+                    </section>
+
+                    <section class="profile-panel" id="avatar-panel">
+                        <div class="profile-panel-heading"><div><p class="profile-eyebrow">PERSONALIZACIÓN</p><h2>Avatar</h2></div></div>
+                        <label for="custom-avatar-input" class="avatar-upload-label">Sube una imagen propia <small>PNG, JPG, GIF o WebP · máximo 1 MB</small></label>
+                        <div class="avatar-upload-row"><input type="file" id="custom-avatar-input" accept="image/png,image/jpeg,image/gif,image/webp">
+                            <button id="upload-btn" type="button" class="collection-action">Subir imagen</button></div>
+                        <div id="presets-block" class="hidden presets-block"><p>O elige un avatar predefinido</p><div id="predefined-avatars-grid" class="preset-grid"></div></div>
+                    </section>
+                </div>
+
+                <section class="profile-panel social-panel" id="social-panel">
+                    <div class="profile-panel-heading"><div><p class="profile-eyebrow">ENCUENTRA A TU GENTE</p><h2>Comunidad</h2></div><span class="privacy-emblem" aria-hidden="true">✧</span></div>
+                    <p class="social-intro">Busca jugadores, gestiona tus solicitudes y mantén el contacto.</p>
+                    <label for="search-input" class="profile-field-label">Buscar usuario</label>
+                    <div class="social-search-row"><input type="search" id="search-input" placeholder="Escribe al menos 2 letras…" autocomplete="off" maxlength="100">
+                        <button id="send-request-btn" type="button" class="collection-action primary">Enviar solicitud</button></div>
+                    <div id="search-results" class="search-results"></div>
+                    <div id="social-lists" class="social-lists"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Perfil de amigo + mensajes directos -->
+    <div id="fm-modal" class="hidden fixed inset-0 z-[90] bg-black/70 flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="fm-name">
+        <div class="fantasy-panel w-full max-w-md max-h-[90vh] flex flex-col overflow-hidden">
+            <div class="p-5 flex items-center gap-4 border-b border-[rgb(var(--c-gold-dark))]">
+                <div id="fm-avatar"></div>
+                <div class="min-w-0 grow">
+                    <h3 id="fm-name" class="text-lg font-bold font-magic text-[color:var(--text-main)] truncate"></h3>
+                    <span id="fm-badge" class="hidden mt-1 inline-block px-2 py-0.5 text-xs font-semibold bg-[rgb(var(--c-raised))] text-[rgb(var(--c-accent))] rounded-full border border-[rgb(var(--c-gold-dark))]"></span>
+                </div>
+                <button id="fm-close" type="button" aria-label="Cerrar" class="text-xl text-[color:var(--text-muted)] hover:text-[rgb(var(--c-accent-hi))] transition">✕</button>
+            </div>
+            <dl class="grid grid-cols-3 gap-2 p-4 text-center">
+                <div class="flex flex-col-reverse bg-[rgb(var(--c-ink-3))] p-2 rounded-lg border border-[rgb(var(--c-gold-dark))]">
+                    <dt class="text-xs text-[color:var(--text-muted)]">Copias</dt>
+                    <dd class="text-xl font-bold font-magic text-[rgb(var(--c-accent))]" data-fm-stat="copies">—</dd>
+                </div>
+                <div class="flex flex-col-reverse bg-[rgb(var(--c-ink-3))] p-2 rounded-lg border border-[rgb(var(--c-gold-dark))]">
+                    <dt class="text-xs text-[color:var(--text-muted)]">Cartas distintas</dt>
+                    <dd class="text-xl font-bold font-magic text-[rgb(var(--c-accent))]" data-fm-stat="cards">—</dd>
+                </div>
+                <div class="flex flex-col-reverse bg-[rgb(var(--c-ink-3))] p-2 rounded-lg border border-[rgb(var(--c-gold-dark))]">
+                    <dt class="text-xs text-[color:var(--text-muted)]">Contenedores</dt>
+                    <dd class="text-xl font-bold font-magic text-[rgb(var(--c-accent))]" data-fm-stat="containers">—</dd>
+                </div>
+            </dl>
+            <p id="fm-privacy-note" class="px-4 text-xs text-[color:var(--text-muted)]"></p>
+            <div id="fm-rarity-stats" class="hidden px-4 pb-3" aria-label="Estadísticas de rareza"></div>
+            <button id="fm-open-collection" type="button" class="hidden mx-4 mb-3 btn-fantasy">Explorar colección completa</button>
+            <div id="fm-messages" class="grow overflow-y-auto px-4 space-y-2 min-h-[160px] max-h-64" aria-live="polite"></div>
+            <p id="fm-typing" class="hidden px-4 text-xs italic text-[color:var(--text-muted)]" aria-live="polite"></p>
+            <div id="fm-gif-picker" class="hidden px-4 pb-2">
+                <input type="text" id="fm-gif-search" maxlength="60" autocomplete="off" placeholder="Buscar GIF..." aria-label="Buscar GIF" class="w-full text-sm mb-2">
+                <div id="fm-gif-results" class="grid grid-cols-3 gap-1.5 max-h-40 overflow-y-auto"></div>
+                <img src="public/assets/Poweredby_100px-Black_VertLogo.png" alt="Powered by Giphy" class="h-4 opacity-75 mt-1">
+            </div>
+            <form id="fm-form" class="p-4 flex gap-2 border-t border-[rgb(var(--c-gold-dark))]">
+                <button type="button" id="fm-gif-btn" class="btn-fantasy text-sm" title="Enviar un GIF" aria-label="Enviar un GIF">GIF</button>
+                <button type="button" id="fm-invite-btn" class="btn-fantasy text-sm" title="Invitar a jugar" aria-label="Invitar a jugar">🎮</button>
+                <input type="text" id="fm-input" maxlength="1000" autocomplete="off" placeholder="Escribe un mensaje" aria-label="Mensaje" class="w-full text-sm">
+                <button type="submit" class="btn-fantasy text-sm whitespace-nowrap">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="friend-collection-modal" class="friend-collection-modal hidden" role="dialog" aria-modal="true" aria-labelledby="friend-collection-title">
+        <section class="friend-collection-window">
+            <header class="friend-collection-header">
+                <div><p class="profile-eyebrow">COLECCIÓN COMPARTIDA</p><h2 id="friend-collection-title">Colección</h2><p id="friend-collection-summary" role="status" aria-live="polite"></p></div>
+                <button id="friend-collection-close" type="button" class="profile-quiet" aria-label="Cerrar colección">Cerrar <span aria-hidden="true">×</span></button>
+            </header>
+            <section class="friend-collection-toolbar" aria-label="Buscar y filtrar la colección compartida">
+                <label class="friend-collection-search" for="friend-collection-q"><span>Buscar en esta colección</span><input id="friend-collection-q" type="search" maxlength="100" placeholder="Carta, edición o tipo…" autocomplete="off"></label>
+                <details class="friend-collection-filters">
+                    <summary>Filtros y orden <span aria-hidden="true">⌄</span></summary>
+                    <div class="friend-filter-grid">
+                        <label>Rareza<select id="friend-collection-rarity"><option value="">Todas las rarezas</option><option value="common">Común</option><option value="uncommon">Poco común</option><option value="rare">Rara</option><option value="mythic">Mítica</option><option value="special">Especial</option><option value="bonus">Bonus</option></select></label>
+                        <label>Tipo<select id="friend-collection-type"><option value="">Cualquier tipo</option></select></label>
+                        <label>Subtipo<select id="friend-collection-subtype" disabled><option value="">Cualquier subtipo</option></select></label>
+                        <label>Ordenar por<select id="friend-collection-sort"><option value="name">Nombre</option><option value="type">Tipo</option><option value="copies">Número de copias</option><option value="printings">Número de ediciones</option></select></label>
+                        <label>Resultados por página<select id="friend-collection-size"><option value="12">12 cartas</option><option value="24" selected>24 cartas</option><option value="48">48 cartas</option><option value="96">96 cartas</option></select></label>
+                        <button id="friend-collection-dir" type="button" class="collection-action">Ascendente</button>
+                    </div>
+                </details>
+                <div class="friend-collection-actions"><button id="friend-collection-export-csv" type="button" class="collection-action">Exportar CSV</button><button id="friend-collection-export-json" type="button" class="collection-action">Exportar JSON</button></div>
+            </section>
+            <div id="friend-collection-results" class="friend-collection-results" aria-busy="false"></div>
+            <footer id="friend-collection-pager" class="friend-collection-pager"></footer>
+        </section>
+    </div>
+
+    <div id="shared-card-lightbox" class="shared-card-lightbox hidden" role="dialog" aria-modal="true" aria-label="Imagen ampliada de la carta">
+        <button id="shared-card-lightbox-close" type="button" class="shared-card-lightbox-close" aria-label="Cerrar imagen ampliada">×</button>
+        <figure><img id="shared-card-lightbox-image" alt=""><figcaption id="shared-card-lightbox-caption"></figcaption></figure>
+    </div>
+
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <script src="js/shared/app-shell.js"></script>
+    <script src="js/pages/profile.js?v=friend-levels-2"></script>
+    <script src="js/shared/footer.js"></script>
+</body>
+</html>
