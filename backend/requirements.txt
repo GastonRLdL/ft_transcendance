@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+uvicorn[standard]
+psycopg2-binary
+pydantic[email]
+python-jose
+bcrypt==4.0.1
+passlib
+bcrypt
+httpx
+requests
+websockets
+python-multipart
